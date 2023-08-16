@@ -44,3 +44,16 @@ class BattleshipsGame:
                 if all(self.player_grid[row][col] == 'X' for row, col in self.computer_fleet):
                     print("Congratulations! You destroyed all enemy battleships! You win!")
                     break
+
+         # The computer randomly selects a row and column to attack.           
+     def computer_turn(self):
+        row, col = random.randint(0, self.grid_size-1), random.randint(0, self.grid_size-1)
+        if self.computer_grid[row][col] == ' ':
+            if (row, col) in self.computer_fleet:
+                print("The computer sank one of your battleships!")
+                self.computer_grid[row][col] = 'X'
+            else:
+                print("The computer missed!")
+                self.computer_grid[row][col] = 'O'
+        else:
+            self.computer_turn()
