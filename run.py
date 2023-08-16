@@ -21,3 +21,15 @@ class Board:
             computer_row = ' '.join(
                 [cell if cell in ['*', '/'] else 'O' for cell in other_board.grid[i]])
             print(f"{player_row.ljust(40)}{computer_row}")
+
+def get_user_guess(size, guessed_coordinates):
+    while True:
+        guess = input(f"Enter your guess (row column): ")
+        try:
+            row, col = map(int, guess.split())
+            if (0 <= row < size and 0 <= col < size) and (row, col) not in guessed_coordinates:
+                return row, col
+            else:
+                print("Guess is off-grid or has been used before. Try again.")
+        except ValueError:
+            print("Invalid input. Try again.")
