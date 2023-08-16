@@ -39,3 +39,45 @@ def computer_guess(size, guessed_coordinates):
         row, col = random.randint(0, size - 1), random.randint(0, size - 1)
         if (row, col) not in guessed_coordinates:
             return row, col
+
+def main():
+    print("Welcome to Battleships!".center(80))
+    player_name = input("Enter your name: ")
+
+    player_score, computer_score = 0, 0
+
+    while input("Do you want to play? (yes/no): ").lower() == "yes":
+        grid_size = 5  # 5 by 5 grid
+        player_board = Board(grid_size, player_name)
+        computer_board = Board(grid_size, "Computer")
+
+        for _ in range(grid_size):
+            player_board.place_ship()
+            computer_board.place_ship()
+
+        print(f"Let's begin, {player_name}!".center(80))
+        player_won, computer_won = False, False
+        player_guessed, computer_guessed = set(), set()
+
+        while not player_won and not computer_won:
+            player_board.print(computer_board)
+            print("\n")
+
+            player_row, player_col = get_user_guess(grid_size, player_guessed)
+            player_guessed.add((player_row, player_col))
+            player_won, computer_board = take_turn(player_row, player_col, computer_board, player_name)
+
+            if not player_won:
+                computer_row, computer_col = computer_guess(grid_size, computer_guessed)
+                computer_guessed.add((computer_row, computer_col))
+                computer_won, player_board = take_turn(computer_row, computer_col, player_board, "Computer")
+
+        player_board.print(computer_board)
+        if player_won:
+            print(f"\nCongratulations, {player_name}! You've sunk all the computer's ships and won!".center(80))
+            player_score += 1
+        else:
+            print("\nGame over! The computer has sunk all your ships.".center(80))
+            computer_score += 1
+
+        print(f"Scores - {player_name}: {player_score}, Computer: {computer_score}".center(80))
