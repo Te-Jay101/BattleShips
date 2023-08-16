@@ -57,3 +57,8 @@ class BattleshipsGame:
                 self.computer_grid[row][col] = 'O'
         else:
             self.computer_turn()
+
+if __name__ == "__main__":
+    grid_size = int(input("Enter grid size: "))
+    game = BattleshipsGame(grid_size)
+    game.play()
