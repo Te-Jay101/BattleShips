@@ -33,3 +33,9 @@ def get_user_guess(size, guessed_coordinates):
                 print("Guess is off-grid or has been used before. Try again.")
         except ValueError:
             print("Invalid input. Try again.")
+
+def computer_guess(size, guessed_coordinates):
+    while True:
+        row, col = random.randint(0, size - 1), random.randint(0, size - 1)
+        if (row, col) not in guessed_coordinates:
+            return row, col
