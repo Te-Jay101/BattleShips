@@ -81,3 +81,14 @@ def main():
             computer_score += 1
 
         print(f"Scores - {player_name}: {player_score}, Computer: {computer_score}".center(80))
+
+def take_turn(row, col, target_board, player):
+    if target_board.grid[row][col] == 'S':
+        print(f"{player} hit a ship!".center(80))
+        target_board.grid[row][col] = '*'
+        if all(cell != 'S' for row in target_board.grid for cell in row):
+            return True, target_board
+    else:
+        print(f"{player} missed.".center(80))
+        target_board.grid[row][col] = '/'
+    return False, target_board
