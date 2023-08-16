@@ -92,3 +92,6 @@ def take_turn(row, col, target_board, player):
         print(f"{player} missed.".center(80))
         target_board.grid[row][col] = '/'
     return False, target_board
+
+if __name__ == "__main__":
+    main()
