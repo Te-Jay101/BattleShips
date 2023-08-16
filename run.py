@@ -58,6 +58,7 @@ class BattleshipsGame:
         else:
             self.computer_turn()
 
+# Create a BattleshipsGame object and start playing.
 if __name__ == "__main__":
     grid_size = int(input("Enter grid size: "))
     game = BattleshipsGame(grid_size)
