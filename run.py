@@ -17,4 +17,9 @@ class BattleshipsGame:
         self.computer_ship1 = self.create_random_ship()
         self.computer_ship2 = self.create_random_ship()
         self.computer_ship3 = self.create_random_ship()
+        self.computer_ship4 = self.create_random_ship()
         
+        self.player_ship1 = self.create_random_ship()
+        self.player_ship2 = self.create_random_ship()
+        self.player_ship3 = self.create_random_ship()
+        self.player_ship4 = self.create_random_ship()
