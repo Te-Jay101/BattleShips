@@ -23,3 +23,12 @@ class BattleshipsGame:
         self.player_ship2 = self.create_random_ship()
         self.player_ship3 = self.create_random_ship()
         self.player_ship4 = self.create_random_ship()
+
+        self.player_ships_left = 4
+        self.computer_ships_left = 4
+        self.player_shots = 10
+        self.computer_shots = 10
+        self.player_guesses = set()
+        self.computer_guesses = set()
+        
+        self.add_player_ships_to_board()
