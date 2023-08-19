@@ -32,3 +32,16 @@ class BattleshipsGame:
         self.computer_guesses = set()
         
         self.add_player_ships_to_board()
+
+    def create_random_ship(self):
+        return random.randint(0, 4), random.randint(0, 4)
+
+    def draw_board(self, game_board):
+        for row in game_board:
+            print(*row)
+
+     def add_player_ships_to_board(self):
+        self.player_game_board[self.player_ship1[0]][self.player_ship1[1]] = "S"
+        self.player_game_board[self.player_ship2[0]][self.player_ship2[1]] = "S"
+        self.player_game_board[self.player_ship3[0]][self.player_ship3[1]] = "S"
+        self.player_game_board[self.player_ship4[0]][self.player_ship4[1]] = "S"
