@@ -94,3 +94,26 @@ class BattleshipsGame:
         if row not in range(1, 6) or column not in range(1, 5):
             print("\nThe numbers must be between 1-5!")
             return self.player_turn()
+
+        row -= 1  
+        column -= 1  
+
+        guess = (row, column)
+
+        if guess in self.player_guesses:
+            print("\nYou have already made that guess! Try again.\n")
+            return self.player_turn()
+
+        if self.computer_game_board[row][column] == "/" or self.computer_game_board[row][column] == "X":
+            print("\nYou have already shot there! Try again.\n")
+            return self.player_turn()
+        elif guess == self.computer_ship1 or guess == self.computer_ship2 or guess == self.computer_ship3:
+            print("\nBoom! You hit a ship!\n")
+            self.computer_game_board[row][column] = "X"
+            self.computer_ships_left -= 1
+            self.player_guesses.add(guess)
+        else:
+            print("\nYou missed!\n")
+            self.computer_game_board[row][column] = "/"
+            self.player_shots -= 1
+            self.player_guesses.add(guess)
