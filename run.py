@@ -2,6 +2,10 @@ import random
 
 
 class BattleshipsGame:
+    """
+    Main board class, sets the board for the game including size,ships.
+    Has methods for showing the boards and adding ships.
+    """
     def __init__(self):
         self.player_game_board = [["O", "O", "O", "O", "O"],
                                   ["O", "O", "O", "O", "O"],
