@@ -45,3 +45,22 @@ class BattleshipsGame:
         self.player_game_board[self.player_ship2[0]][self.player_ship2[1]] = "S"
         self.player_game_board[self.player_ship3[0]][self.player_ship3[1]] = "S"
         self.player_game_board[self.player_ship4[0]][self.player_ship4[1]] = "S"
+
+    def play_again(self):
+        try_again = input("Play again? Yes or No? >: ").lower()
+        if try_again == "yes":
+            self.__init__()
+            self.play_game()
+        else:
+            print("Sorry to see you go!")
+            return
+
+    def play_game(self):
+        print("Welcome to BattleShips!"
+              "\nYour challenge is to find and destroy all your enemies ships!\n")
+
+        print("""\nTask:
+        \nYou have 10 Shots and the enemy has 3 ships.
+        In order to hit them, you have to enter numbers for each location. like so:
+        For the first row and first column, you have to write 1 and 1.
+        Good luck on your conquest!\n""")
