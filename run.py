@@ -91,7 +91,7 @@ class BattleshipsGame:
             print("Only enter numbers!")
             return self.player_turn()
 
-        if row not in range(1, 6) or column not in range(1, 5):
+        if row not in range(1, 6) or column not in range(1, 6):
             print("\nThe numbers must be between 1-5!")
             return self.player_turn()
 
@@ -136,6 +136,7 @@ class BattleshipsGame:
                 self.player_game_board[guess[0]][guess[1]] = "/"
                 self.computer_shots -= 1
                 break
+
 
 if __name__ == "__main__":
     game = BattleshipsGame()
