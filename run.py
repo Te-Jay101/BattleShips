@@ -40,7 +40,7 @@ class BattleshipsGame:
         for row in game_board:
             print(*row)
 
-     def add_player_ships_to_board(self):
+    def add_player_ships_to_board(self):
         self.player_game_board[self.player_ship1[0]][self.player_ship1[1]] = "S"
         self.player_game_board[self.player_ship2[0]][self.player_ship2[1]] = "S"
         self.player_game_board[self.player_ship3[0]][self.player_ship3[1]] = "S"
@@ -117,3 +117,26 @@ class BattleshipsGame:
             self.computer_game_board[row][column] = "/"
             self.player_shots -= 1
             self.player_guesses.add(guess)
+
+    def computer_turn(self):
+        while True:
+            guess = self.create_random_ship()
+            if guess in self.computer_guesses:
+                continue
+            self.computer_guesses.add(guess)
+            
+            if guess == self.player_ship1 or guess == self.player_ship2 or guess == self.player_ship3:
+                print("\nOh no! The computer hit your ship!\n")
+                self.player_game_board[guess[0]][guess[1]] = "X"
+                self.player_ships_left -= 1
+                self.computer_shots -= 1
+                break
+            else:
+                print("\nThe computer missed!\n")
+                self.player_game_board[guess[0]][guess[1]] = "/"
+                self.computer_shots -= 1
+                break
+
+if __name__ == "__main__":
+    game = BattleshipsGame()
+    game.play_game()
