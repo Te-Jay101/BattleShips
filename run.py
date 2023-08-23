@@ -1,5 +1,6 @@
 import random
 
+
 class BattleshipsGame:
     def __init__(self):
         self.player_game_board = [["O", "O", "O", "O", "O"],
@@ -7,7 +8,7 @@ class BattleshipsGame:
                                   ["O", "O", "O", "O", "O"],
                                   ["O", "O", "O", "O", "O"],
                                   ["O", "O", "O", "O", "O"]]
-        
+
         self.computer_game_board = [["O", "O", "O", "O", "O"],
                                     ["O", "O", "O", "O", "O"],
                                     ["O", "O", "O", "O", "O"],
@@ -18,7 +19,7 @@ class BattleshipsGame:
         self.computer_ship2 = self.create_random_ship()
         self.computer_ship3 = self.create_random_ship()
         self.computer_ship4 = self.create_random_ship()
-        
+
         self.player_ship1 = self.create_random_ship()
         self.player_ship2 = self.create_random_ship()
         self.player_ship3 = self.create_random_ship()
@@ -30,7 +31,7 @@ class BattleshipsGame:
         self.computer_shots = 10
         self.player_guesses = set()
         self.computer_guesses = set()
-        
+
         self.add_player_ships_to_board()
 
     def create_random_ship(self):
@@ -95,8 +96,8 @@ class BattleshipsGame:
             print("\nThe numbers must be between 1-5!")
             return self.player_turn()
 
-        row -= 1  
-        column -= 1  
+        row -= 1
+        column -= 1
 
         guess = (row, column)
 
@@ -124,7 +125,7 @@ class BattleshipsGame:
             if guess in self.computer_guesses:
                 continue
             self.computer_guesses.add(guess)
-            
+
             if guess == self.player_ship1 or guess == self.player_ship2 or guess == self.player_ship3:
                 print("\nOh no! The computer hit your ship!\n")
                 self.player_game_board[guess[0]][guess[1]] = "X"
