@@ -64,3 +64,33 @@ class BattleshipsGame:
         In order to hit them, you have to enter numbers for each location. like so:
         For the first row and first column, you have to write 1 and 1.
         Good luck on your conquest!\n""")
+
+        while self.player_shots and self.computer_shots:
+            print("\nYour board:")
+            self.draw_board(self.player_game_board)
+            print("\nComputer's board:")
+            self.draw_board(self.computer_game_board)
+
+            self.player_turn()
+            if self.computer_ships_left == 0:
+                print("Congratulations! You sunk all of the computer's ships. You win!")
+                self.play_again()
+                break
+
+            self.computer_turn()
+            if self.player_ships_left == 0:
+                print("Oh no! The computer sunk all of your ships. You lose!")
+                self.play_again()
+                break
+
+    def player_turn(self):
+        try:
+            row = int(input("Enter a row number between 1-5 >: "))
+            column = int(input("Enter a column number between 1-5 >: "))
+        except ValueError:
+            print("Only enter numbers!")
+            return self.player_turn()
+
+        if row not in range(1, 6) or column not in range(1, 5):
+            print("\nThe numbers must be between 1-5!")
+            return self.player_turn()
