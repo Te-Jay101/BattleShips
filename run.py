@@ -3,7 +3,7 @@ import random
 
 class BattleshipsGame:
     """
-    Main board class, sets the board for the game including size,ships.
+    Main board class, sets the board for the game including size, ships.
     Has methods for showing the boards and adding ships.
     """
     def __init__(self):
@@ -31,8 +31,8 @@ class BattleshipsGame:
 
         self.player_ships_left = 4
         self.computer_ships_left = 4
-        self.player_shots = 10
-        self.computer_shots = 10
+        self.player_shots = 25
+        self.computer_shots = 25
         self.player_guesses = set()
         self.computer_guesses = set()
 
@@ -54,7 +54,6 @@ class BattleshipsGame:
     def play_again(self):
         try_again = input("Play again? Yes or No? >: ").lower()
         if try_again == "yes":
-            self.__init__()
             self.play_game()
         else:
             print("Sorry to see you go!")
@@ -62,11 +61,12 @@ class BattleshipsGame:
 
     def play_game(self):
         print("Welcome to BattleShips!"
-              "\nYour challenge is to find and destroy all your enemies ships!\n")
+              "\nYour challenge is to destroy all your enemies ships!\n")
 
         print("""\nTask:
-        \nYou have 10 Shots and the enemy has 3 ships.
-        In order to hit them, you have to enter numbers for each location. like so:
+        \nYou have 25 Shots and the enemy has 4 ships.
+        In order to hit them, you have to enter numbers for each location.
+        Like so:
         For the first row and first column, you have to write 1 and 1.
         Good luck on your conquest!\n""")
 
@@ -78,7 +78,7 @@ class BattleshipsGame:
 
             self.player_turn()
             if self.computer_ships_left == 0:
-                print("Congratulations! You sunk all of the computer's ships. You win!")
+                print("Congratulations! You win!")
                 self.play_again()
                 break
 
@@ -130,7 +130,7 @@ class BattleshipsGame:
                 continue
             self.computer_guesses.add(guess)
 
-            if guess == self.player_ship1 or guess == self.player_ship2 or guess == self.player_ship3:
+            if guess == self.player_ship1 or guess == self.player_ship2 or guess == self.player_ship3 or guess == self.player_ship4:
                 print("\nOh no! The computer hit your ship!\n")
                 self.player_game_board[guess[0]][guess[1]] = "X"
                 self.player_ships_left -= 1
