@@ -39,19 +39,32 @@ class BattleshipsGame:
         self.add_player_ships_to_board()
 
     def create_random_ship(self):
+        """
+        Generates random coordinates for a ship on the game board.
+        Returns a tuple (row, column).
+        """
         return random.randint(0, 4), random.randint(0, 4)
 
     def draw_board(self, game_board):
+        """
+        Prints the given game board to the console.
+        """
         for row in game_board:
             print(*row)
 
     def add_player_ships_to_board(self):
+        """
+        Adds player's ships to the player's game board.
+        """
         self.player_game_board[self.player_ship1[0]][self.player_ship1[1]] = "S"
         self.player_game_board[self.player_ship2[0]][self.player_ship2[1]] = "S"
         self.player_game_board[self.player_ship3[0]][self.player_ship3[1]] = "S"
         self.player_game_board[self.player_ship4[0]][self.player_ship4[1]] = "S"
 
     def play_again(self):
+        """
+        Asks the player if they want to play again.
+        """
         try_again = input("Play again? Yes or No? >: ").lower()
         if try_again == "yes":
             self.play_game()
@@ -60,6 +73,9 @@ class BattleshipsGame:
             return
 
     def play_game(self):
+        """
+        Starts and manages the main game loop.
+        """
         print("Welcome to BattleShips!"
               "\nYour challenge is to destroy all your enemies ships!\n")
 
@@ -89,6 +105,9 @@ class BattleshipsGame:
                 break
 
     def player_turn(self):
+        """
+        Handles the player's turn by allowing them to make guesses on the computer's board.
+        """
         try:
             row = int(input("Enter a row number between 1-5 >: "))
             column = int(input("Enter a column number between 1-5 >: "))
@@ -124,6 +143,9 @@ class BattleshipsGame:
             self.player_guesses.add(guess)
 
     def computer_turn(self):
+        """
+        Handles the computer's turn by allowing it to make guesses on the player's board.
+        """
         while True:
             guess = self.create_random_ship()
             if guess in self.computer_guesses:
