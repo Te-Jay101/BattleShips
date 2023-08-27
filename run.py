@@ -81,10 +81,10 @@ class BattleshipsGame:
 
         print("""\nTask:
         \nYou have 25 Shots and the enemy has 4 ships.
-        In order to hit them, you have to enter numbers for each location.
-        Like so:
-        For the first row and first column, you have to write 1 and 1.
-        Good luck on your conquest!\n""")
+        \nIn order to hit them, you have to enter numbers for each location.
+        \nLike so:
+        \nFor the first row and first column, you have to write 1 and 1.
+        \nGood luck on your conquest!\n""")
 
         while self.player_shots and self.computer_shots:
             print("\nYour board:")
